@@ -9,7 +9,8 @@ export class CockpitComponent implements OnInit {
 
   // properties
   @Output() serverCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
-  @Output() blueprintCreated = new EventEmitter<{ blueprintName: string, blueprintContent: string }>();
+  // tslint:disable-next-line:no-output-rename
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{ blueprintName: string, blueprintContent: string }>();
 
   newServerName = '';
   newServerContent = '';
