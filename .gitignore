@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+.nyc_output/c22d278bed133e1099460107e4b05241.json
+.nyc_output/ae728dd993775cb913efc9f97025ef1a.json
+.nyc_output/4c847733505c4d177d74139d88f42b43.json
