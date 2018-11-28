@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -15,20 +15,35 @@ export class CockpitComponent implements OnInit {
   // newServerName = '';
   // newServerContent = '';
 
+  // argument in ViewChild is the selector
+  // and we pass a name of a local reference
+  // @ViewChild(CockpitComponent) serverContentInput; we can also do this
+  // serverContentInput is of type ElementRef
+  // with this we get direct access to elements of our template throught @ViewChild
+  @ViewChild('serverContentInput') serverContentInput: ElementRef;
+  @ViewChild('serverNameInput') serverNameInput: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  onAddServer(nameInput, contentInput) {
+  onAddServer() {
 
     // console.log(nameInput);
     // console.log(nameInput.value);
 
+    // console.log(this.serverContentInput);
+
     this.serverCreated.emit({
-      serverName: nameInput.value,
-      serverContent: contentInput.value
+      serverName: this.serverNameInput.nativeElement.value,
+      serverContent: this.serverContentInput.nativeElement.value
     });
+
+    // this.serverCreated.emit({
+    //   serverName: nameInput.value,
+    //   serverContent: contentInput.value
+    // });
 
     // this.serverCreated.emit({
     //   serverName: this.newServerName,
@@ -42,11 +57,17 @@ export class CockpitComponent implements OnInit {
     // });
   }
 
-  onAddBlueprint(nameInput, contentInput) {
+  onAddBlueprint() {
+
     this.blueprintCreated.emit({
-      blueprintName: nameInput.value,
-      blueprintContent: contentInput.value
+      blueprintName: this.serverNameInput.nativeElement.value,
+      blueprintContent: this.serverContentInput.nativeElement.value
     });
+
+    // this.blueprintCreated.emit({
+    //   blueprintName: nameInput.value,
+    //   blueprintContent: contentInput.value
+    // });
 
     // this.serverElements.push({
     //   type: 'blueprint',

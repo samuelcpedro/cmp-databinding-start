@@ -9,7 +9,7 @@
      #serverNameInput> 
      <!-- Refence to the element with all of is properties -->
      <!-- We can only use in the twmplate no in the typescript code -->
-     {{serverNameInput.value}}
+     <p>{{serverNameInput.value}}</p>
     <label>Server Content</label>
     <!-- <input
       type="text"
@@ -20,7 +20,7 @@
       class="form-control"
       #serverContentInput>
     <br>
-    <button class="btn btn-primary" (click)="onAddServer(serverNameInput, serverContentInput)">Add Server</button>
-    <button class="btn btn-primary" (click)="onAddBlueprint(serverNameInput, serverContentInput)">Add Server Blueprint</button>
+    <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+    <button class="btn btn-primary" (click)="onAddBlueprint()">Add Server Blueprint</button>
   </div>
 </div>
