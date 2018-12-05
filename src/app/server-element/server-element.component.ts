@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import {
   Component,
   Input,
@@ -11,7 +10,9 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 
 @Component({
@@ -37,6 +38,7 @@ export class ServerElementComponent implements
   // tslint:disable-next-line:no-input-rename
   @Input('srvElement') element: { type: string, name: string, content: string };
   @Input() name: string;
+  @ViewChild('heading') header: ElementRef;
 
   constructor() {
     console.log('constructor called!');
@@ -53,6 +55,7 @@ export class ServerElementComponent implements
     // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     // Add 'implements OnInit' to the class.
     console.log('ngOnInit called!');
+    console.log(this.header.nativeElement.textContent); // empty meaning that it doesnt have text
   }
 
   ngDoCheck(): void {
@@ -78,6 +81,7 @@ export class ServerElementComponent implements
     // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     // Add 'implements AfterViewInit' to the class.
     console.log('ngAfterViewInit called!');
+    console.log(this.header.nativeElement.textContent); // access to the template elements
   }
   ngAfterViewChecked(): void {
     // Called after every check of the component's view. Applies to components only.
